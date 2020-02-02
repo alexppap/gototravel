@@ -15,6 +15,5 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.header
-  font-size:30px
+
 </style>
