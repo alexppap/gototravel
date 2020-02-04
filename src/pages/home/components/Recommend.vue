@@ -1,0 +1,74 @@
+<template>
+  <div>
+    <div class="title">
+      <span class="iconfont icon">&#xe85c;</span>猜你喜欢
+    </div>
+    <ul>
+      <li class="item border-bottom">
+        <img class="item-img" src="http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_140x140_80f63803.jpg">
+        <div class="item-info">
+          <p class="item-title">故宫</p>
+          <p class="item-desc">就大四的大奖赛就大四的大奖赛就大四的大奖赛</p>
+          <p><button class="item-button">查看详情</button></p>
+        </div>
+      </li>
+      <li class="item border-bottom">
+        <img class="item-img" src="http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_140x140_80f63803.jpg">
+        <div class="item-info">
+          <p class="item-title">故宫</p>
+          <p class="item-desc">就大四的大奖赛就大四的大奖赛就大四的大奖赛</p>
+          <p><button class="item-button">查看详情</button></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'HomeRecommend'
+}
+</script>
+
+<style lang="stylus" scoped>
+.title
+  height: .8rem
+  line-height: .8rem
+  margin-top: .1rem
+  padding-left: .2rem
+  font-size: .32rem
+  background: #eee
+  .icon
+    color: red
+.item
+  height: 1.88rem
+  display:flex
+  overflow:hidden
+  .item-img
+    width: 1.7rem
+    height: 1.7rem
+    padding: .1rem
+  .item-info
+    flex:1
+    padding: .1rem
+    .item-title
+      line-height: .44rem
+      font-size: .32rem
+      overflow:hidden
+      white-space:nowrap
+      text-overflow:ellipsis
+    .item-desc
+      line-height: .4rem
+      font-size: .32rem
+      color: #ccc
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+    .item-button
+      line-height: .44rem
+      padding: 0.04rem
+      margin-top: .1rem
+      background: #ffa500
+      color: #fff
+      border-radius: 0.04rem
+</style>
