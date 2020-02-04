@@ -4,13 +4,17 @@
       周末去哪儿
     </div>
     <ul>
-      <li class="border-bottom">
+      <li
+        class="border-bottom"
+        v-for="item of list"
+        :key="item.id"
+      >
         <div class="wrapper">
-          <img class="img" src="http://img1.qunarzz.com/sight/source/1510/6e/1ea71e2f04e.jpg_r_640x214_aa6f091d.jpg">
+          <img class="img" :src="item.imgUrl">
         </div>
         <div class="item-info">
-          <p class="item-title">dasdd</p>
-          <p class="item-desc">dasdsad</p>
+          <p class="item-title">{{item.title}}</p>
+          <p class="item-desc">{{item.desc}}</p>
           </div>
       </li>
     </ul>
@@ -19,7 +23,10 @@
 
 <script>
 export default {
-  name: 'HomeWeekend'
+  name: 'HomeWeekend',
+  props: {
+    list: Array
+  }
 }
 </script>
 
