@@ -7,9 +7,13 @@
      请输入你想输入的内容
      </div>
     <div class="header-right">
-      <div class="nav-city">
+      <router-link
+        tag="div"
+        class="nav-city"
+        to="/city"
+      >
       北京<span class="iconfont arrow-icon">&#xe600;</span>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
