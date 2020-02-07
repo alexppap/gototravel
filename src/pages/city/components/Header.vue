@@ -23,13 +23,13 @@ export default {
   text-align: center
   background: $bgColor
   color: #fff
-  font-size: 16px
+  font-size: .32rem
   .header-back
     position: absolute
     top: 0
     left: 0
-    width: 32px
+    width: .64rem
     text-align: center
-    font-size: 20px
+    font-size: .4rem
     color: #fff
 </style>

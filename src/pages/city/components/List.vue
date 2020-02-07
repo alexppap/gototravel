@@ -1,6 +1,6 @@
 <template>
   <div class="list" ref="wrapper">
-    <div>
+   <div class="content">
     <div class="area">
       <div class="title border-topbottom">当前城市</div>
       <div class="button-list">
@@ -14,31 +14,54 @@
       <div class="button-list">
         <div
           class="button-wrapper"
+          v-for="item of hot"
+          :key="item.id"
          >
-          <div class="button">北京</div>
+          <div class="button">{{item.name}}</div>
         </div>
       </div>
     </div>
-    <div class="area"
+    <div
+      class="area"
+      v-for="(item, key) of cities"
+      :key="key"
+      :ref="key"
     >
-      <div class="title  border-topbottom">A</div>
+      <div class="title  border-topbottom">{{key}}</div>
       <div class="item-list">
         <div class="item border-bottom"
+        v-for="innerItem of item"
+        :key="innerItem.id"
         >
-        阿拉善盟
+        {{innerItem.name}}
         </div>
       </div>
     </div>
-  </div>
+   </div>
   </div>
 </template>
 
 <script>
-import BScroll from '@better-scroll/core'
+import BScroll from 'better-scroll'
 export default {
   name: 'CityList',
+  props: {
+    hot: Array,
+    cities: Object,
+    letter: String
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        const element = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(element)
+      }
+    }
+  },
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.wrapper)
+    })
   }
 }
 </script>
@@ -55,7 +78,7 @@ export default {
 .list
   overflow: hidden
   position: absolute
-  top: 1.8rem
+  top: 1.78rem
   right: 0
   left: 0
   bottom: 0
