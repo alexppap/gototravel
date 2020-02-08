@@ -9,6 +9,7 @@
       class="search-item border-bottom"
       v-for="item of list"
       :key="item.id"
+      @click="handleCityClick(item.name)"
       >
         {{item.name}}
       </li>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
   name: 'CitySearch',
   props: {
@@ -30,6 +32,13 @@ export default {
       list: [],
       timer: null
     }
+  },
+  methods: {
+    handleCityClick (city) {
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   },
   computed: {
     hasNoData () {

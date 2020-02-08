@@ -12,7 +12,8 @@
         class="nav-city"
         to="/city"
       >
-      北京<span class="iconfont arrow-icon">&#xe600;</span>
+      {{this.$store.state.city}}
+      <span class="iconfont arrow-icon">&#xe600;</span>
       </router-link>
     </div>
   </div>
