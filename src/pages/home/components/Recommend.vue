@@ -4,7 +4,9 @@
       <span class="iconfont icon">&#xe85c;</span>猜你喜欢
     </div>
     <ul>
-      <li
+      <router-link
+        tag="li"
+        :to="'/detail/' + item.id"
         class="item border-bottom"
         v-for="item of list"
         :key="item.id"
@@ -15,7 +17,7 @@
           <p class="item-desc">{{item.desc}}</p>
           <p><button class="item-button">查看详情</button></p>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
