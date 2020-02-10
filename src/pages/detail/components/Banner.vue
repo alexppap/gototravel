@@ -1,14 +1,40 @@
 <template>
-  <div class="img-wrapper">
+  <div>
+  <div class="img-wrapper" @click="handleBannerClick">
     <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/1602/45/459bd3d00321a44790.water.jpg_600x330_81c878a2.jpg"/>
     <div class="banner-title">景山公园(AAAA景区)</div>
     <div class="title-bottom"></div>
   </div>
+  <gallary-img
+  :imgs="gallaryImgs"
+  v-show="showGallary"
+  @close="handleBannerClose"
+  >
+  </gallary-img>
+  </div>
 </template>
 
 <script>
+import GallaryImg from '@/common/gallary'
 export default {
-  name: 'DetailBanner'
+  name: 'DetailBanner',
+  components: {
+    GallaryImg
+  },
+  data () {
+    return {
+      showGallary: false,
+      gallaryImgs: ['http://img1.qunarzz.com/sight/p0/1905/58/5845ebab604045b9a3.img.jpg_350x240_b11c8058.jpg', 'http://img1.qunarzz.com/sight/p0/1909/a7/a7f107630d794c8a3.img.jpg_350x240_a7898b34.jpg']
+    }
+  },
+  methods: {
+    handleBannerClick () {
+      this.showGallary = true
+    },
+    handleBannerClose () {
+      this.showGallary = false
+    }
+  }
 }
 </script>
 
