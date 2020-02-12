@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <router-link
       tag="div"
       class="header-abs"
@@ -9,7 +9,7 @@
     <div class="iconfont header-abs-back">&#xe624;</div>
     </router-link>
     <div class="header" v-show="!showHeader" :style="opacityStyle">
-    城市选择
+    景点详情
     <router-link to='/'>
     <div class="iconfont header-back">&#xe624;</div>
     </router-link>
@@ -68,6 +68,7 @@ export default {
   .header-abs-back
     color: #fff
 .header
+  z-index: 2
   position: fixed
   top: 0
   left: 0

@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content border-bottom">
     <div class="baseinfo">
       <div class="img-wrapper">
         <div>
@@ -34,6 +34,7 @@ export default {
 
 <style lang="stylus" scoped>
 .content
+  z-index: 1
   position: relative
   top: -0.1rem
   height: 1.88rem
