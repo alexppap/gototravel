@@ -115,8 +115,11 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
-  ]
+    ]),
+    new webpack.DllReferencePlugin({
+      manifest: require('../dist/vendor-manifest.json')
+    })
+    ]
 })
 
 if (config.build.productionGzip) {
