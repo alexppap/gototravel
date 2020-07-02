@@ -18,15 +18,15 @@
       "vue",
     ],
     "lib": [
-      "esnext",
       "dom",
-      "dom.iterable",
-      "scripthost"
+      "es2015",
+      "es2015.promise"
     ]
   },
   "exclude": [
     "node_modules",
     "dist",
     "tests"
-  ]
+  ],
+  "include": ["typings"]
 }
