@@ -21,32 +21,38 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HomeIcon',
-  props: {
-    list: Array
-  },
-  data () {
-    return {
-      swiperOption: {
-        autoplay: false
-      }
-    }
-  },
-  computed: {
-    pages () {
-      const pages = []
-      this.list.forEach((item, index) => {
-        const page = Math.floor(index / 8)
+<script lang='ts'>
+import { Vue, Component, Prop } from 'vue-property-decorator'
+
+@Component
+export default class HomeIcon extends Vue{
+  @Prop({ default: [] }) list!: Array<object>
+  swiperOption: object = {autoplay: false}
+
+  get pages(): Array<object> {
+    const pages: Array<Array<object>> = []
+      this.list.forEach((item: object, index: number) => {
+        const page: number = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
         }
         pages[page].push(item)
       })
       return pages
-    }
   }
+  // computed: {
+  //   pages () {
+  //     const pages = []
+  //     this.list.forEach((item, index) => {
+  //       const page = Math.floor(index / 8)
+  //       if (!pages[page]) {
+  //         pages[page] = []
+  //       }
+  //       pages[page].push(item)
+  //     })
+  //     return pages
+  //   }
+  // }
 }
 </script>
 

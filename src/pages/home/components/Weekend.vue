@@ -21,13 +21,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HomeWeekend',
-  props: {
-    list: Array
+<script lang='ts'>
+import { Vue, Component, Prop } from 'vue-property-decorator'
+@Component
+export default class HomeWeekend extends Vue {
+  @Prop({ default: [] }) list!: Array<object>
+  
   }
-}
 </script>
 
 <style lang="stylus" scoped>

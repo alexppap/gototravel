@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "noImplicitAny": false,
     "types": [
-      "vue",
+      "vue"
     ],
     "paths": {
       "@/*": ["src/*"]

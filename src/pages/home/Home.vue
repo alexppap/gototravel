@@ -8,36 +8,38 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import axios from 'axios'
-import HomeHeader from './components/Header'
-import HomeSwiper from './components/Swiper'
-import HomeIcon from './components/Icon'
-import HomeRecommend from './components/Recommend'
-import HomeWeekend from './components/Weekend'
-import {mapState} from 'vuex'
-export default {
-  name: 'Home',
+import { Vue} from 'vue-property-decorator'
+import Component from "vue-class-component";
+import HomeHeader from './components/Header.vue'
+import HomeSwiper from './components/Swiper.vue'
+import HomeIcon from './components/Icon.vue'
+import HomeRecommend from './components/Recommend.vue'
+import HomeWeekend from './components/Weekend.vue'
+// import {mapState} from 'vuex'
+export default class Home extends Vue {
+  @Component({
   components: {
     HomeHeader,
     HomeSwiper,
     HomeIcon,
     HomeRecommend,
     HomeWeekend
-
-  },
-  computed: {
-    ...mapState(['city'])
-  },
-  data () {
-    return {
-      lastcity: '',
-      swiperList: [],
-      iconList: [],
-      recommendList: [],
-      weekendList: []
-    }
-  },
+  }
+})
+  // computed: {
+  //   ...mapState(['city'])
+  // },
+  // data () {
+  //   return {
+  //     lastcity: '',
+  //     swiperList: [],
+  //     iconList: [],
+  //     recommendList: [],
+  //     weekendList: []
+  //   }
+  // },
   methods: {
     getHomeInfo () {
       axios.get('/api/index.json?city=' + this.city)
