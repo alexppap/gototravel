@@ -15,6 +15,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "noImplicitAny": false,
+    "strictPropertyInitialization": false,
     "types": [
       "vue"
     ],
@@ -33,6 +34,9 @@
     "tests"
   ],
   "include": [
-  "typings", "vue.d.ts"
+  "typings",
+  "src/**/*.ts",
+  "src/**/*.tsx",
+  "src/**/*.vue"
 ]
 }
