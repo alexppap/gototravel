@@ -17,18 +17,18 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 @Component
 export default class HomeSwiper extends Vue {
   @Prop({ default: [] }) list!: Array<object>
-  
+
      swiperOption: object = {
-        pagination: '.swiper-pagination',
-        loop: true
-    }
-    // return {
-    //   swiperOption: {
-    //     pagination: '.swiper-pagination',
-    //     loop: true
-    //   }
-    // }
-  }
+       pagination: '.swiper-pagination',
+       loop: true
+     }
+  // return {
+  //   swiperOption: {
+  //     pagination: '.swiper-pagination',
+  //     loop: true
+  //   }
+  // }
+}
 </script>
 
 <style lang="stylus" scoped>

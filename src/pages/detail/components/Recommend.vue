@@ -20,12 +20,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'DetailRecommend',
-  props: {
-    list: Array
-  }
+<script lang='ts'>
+import { Vue, Component, Prop } from 'vue-property-decorator'
+@Component
+export default class DetailRecommend extends Vue {
+  @Prop({ default: [] }) list!: Array<object>
 }
 </script>
 

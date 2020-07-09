@@ -25,20 +25,20 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class HomeIcon extends Vue{
+export default class HomeIcon extends Vue {
   @Prop({ default: [] }) list!: Array<object>
   swiperOption: object = {autoplay: false}
 
-  get pages(): Array<object> {
+  get pages (): Array<object> {
     const pages: Array<Array<object>> = []
-      this.list.forEach((item: object, index: number) => {
-        const page: number = Math.floor(index / 8)
-        if (!pages[page]) {
-          pages[page] = []
-        }
-        pages[page].push(item)
-      })
-      return pages
+    this.list.forEach((item: object, index: number) => {
+      const page: number = Math.floor(index / 8)
+      if (!pages[page]) {
+        pages[page] = []
+      }
+      pages[page].push(item)
+    })
+    return pages
   }
   // computed: {
   //   pages () {

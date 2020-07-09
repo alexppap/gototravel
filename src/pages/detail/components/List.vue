@@ -42,25 +42,20 @@
   </div>
 </template>
 
-<script>
-
-export default {
-  name: 'DetailList',
-  data () {
-    return {
-      showData: true
-    }
-  },
-  methods: {
-    handleTicketClick () {
-      if (this.showData) {
-        this.showData = false
-      } else {
-        this.showData = true
-      }
+<script lang='ts'>
+import {Vue, Component} from 'vue-property-decorator'
+@Component
+export default class DetailList extends Vue {
+  showData:boolean = true
+  handleTicketClick ():void {
+    if (this.showData) {
+      this.showData = false
+    } else {
+      this.showData = true
     }
   }
 }
+
 </script>
 
 <style lang="stylus" scoped>

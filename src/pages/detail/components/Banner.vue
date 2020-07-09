@@ -14,26 +14,23 @@
   </div>
 </template>
 
-<script>
-import GallaryImg from '@/common/gallary'
-export default {
-  name: 'DetailBanner',
+<script lang='ts'>
+import GallaryImg from '@/common/gallary.vue'
+import { Vue, Component } from 'vue-property-decorator'
+@Component({
   components: {
     GallaryImg
-  },
-  data () {
-    return {
-      showGallary: false,
-      gallaryImgs: ['http://img1.qunarzz.com/sight/p0/1905/58/5845ebab604045b9a3.img.jpg_350x240_b11c8058.jpg', 'http://img1.qunarzz.com/sight/p0/1909/a7/a7f107630d794c8a3.img.jpg_350x240_a7898b34.jpg']
-    }
-  },
-  methods: {
-    handleBannerClick () {
-      this.showGallary = true
-    },
-    handleBannerClose () {
-      this.showGallary = false
-    }
+  }
+})
+export default class DetailBanner extends Vue {
+  showGallary: boolean = false
+  gallaryImgs: Array<string> = ['http://img1.qunarzz.com/sight/p0/1905/58/5845ebab604045b9a3.img.jpg_350x240_b11c8058.jpg', 'http://img1.qunarzz.com/sight/p0/1909/a7/a7f107630d794c8a3.img.jpg_350x240_a7898b34.jpg']
+
+  handleBannerClick (): void{
+    this.showGallary = true
+  }
+  handleBannerClose (): void {
+    this.showGallary = false
   }
 }
 </script>

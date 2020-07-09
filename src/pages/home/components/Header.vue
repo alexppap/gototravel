@@ -12,7 +12,8 @@
         class="nav-city"
         to="/city"
       >
-      {{this.$store.state.city}}
+      上海
+      <!-- {{this.$store.state.city}} -->
       <span class="iconfont arrow-icon">&#xe600;</span>
       </router-link>
     </div>

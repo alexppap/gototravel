@@ -10,11 +10,11 @@
 
 <script>
 import axios from 'axios'
-import DetailBanner from './components/Banner'
-import DetailHeader from './components/Header'
-import DetailBaseinfo from './components/Baseinfo'
-import DetailList from './components/List'
-import DetailRecommend from './components/Recommend'
+import DetailBanner from './components/Banner.vue'
+import DetailHeader from './components/Header.vue'
+import DetailBaseinfo from './components/Baseinfo.vue'
+import DetailList from './components/List.vue'
+import DetailRecommend from './components/Recommend.vue'
 export default {
   name: 'Detail',
   components: {

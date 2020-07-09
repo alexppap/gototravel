@@ -26,10 +26,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'DetailBaseinfo'
-}
+<script lang='ts'>
+import { Vue, Component } from 'vue-property-decorator'
+@Component
+export default class DetailBaseinfo extends Vue {}
 </script>
 
 <style lang="stylus" scoped>

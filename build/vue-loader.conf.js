@@ -18,5 +18,14 @@ module.exports = {
     source: 'src',
     img: 'src',
     image: 'xlink:href'
-  }
+  },
+  loaders: {
+              ts:  [
+                        {
+                            loader: 'ts-loader',
+                            options: {
+                                appendTsSuffixTo: [/\.vue$/]
+                            }
+              }]
+         }
 }

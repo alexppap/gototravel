@@ -14,27 +14,19 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'GallaryImg',
-  props: {
-    imgs: Array
-  },
-  data () {
-    return {
-      swiperOption: {
-        pagination: '.swiper-pagination',
-        paginationType: 'fraction',
-        observeParents: true,
-        observer: true
-      }
-    }
-  },
-  methods: {
-    handleGallaryClick () {
-      this.$emit('close')
-    }
+<script lang='ts'>
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
+@Component
+export default class GallaryImg extends Vue {
+  @Prop({ default: [] }) imgs!: Array<string>
+  swiperOption: object = {
+    pagination: '.swiper-pagination',
+    paginationType: 'fraction',
+    observeParents: true,
+    observer: true
   }
+  @Emit('close')
+  handleGallaryClick (): void {}
 }
 </script>
 
