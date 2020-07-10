@@ -1,5 +1,5 @@
 <template>
-  <div class="list" ref="wrapper">
+  <div class="wrapper">
    <div class="content">
     <div class="area">
       <div class="title border-topbottom">当前城市</div>
@@ -43,39 +43,41 @@
   </div>
 </template>
 
-<script>
-import BScroll from 'better-scroll'
-import {mapState, mapMutations} from 'vuex'
-export default {
-  name: 'CityList',
-  props: {
-    hot: Array,
-    cities: Object,
-    letter: String
-  },
-  computed: {
-    ...mapState({
-      currentCity: 'city'
-    })
-  },
-  methods: {
-    handleCityClick (city) {
-      this.changeCity(city)
-      this.$router.push('/')
-    },
-    ...mapMutations(['changeCity'])
-  },
-  watch: {
-    letter () {
-      if (this.letter) {
-        const element = this.$refs[this.letter][0]
-        this.scroll.scrollToElement(element)
-      }
-    }
-  },
-  mounted () {
+<script lang='ts'>
+import {Vue, Component, Prop} from 'vue-property-decorator'
+import BScroll from '@better-scroll/core'
+// import {mapState, mapMutations} from 'vuex'
+@Component
+export default class CityList extends Vue {
+  @Prop({default: []}) hot: Array<object>
+  @Prop({default: {}}) cities: object
+  @Prop({default: ''}) letter: string
+  currentCity: string = '上海'
+  // computed: {
+  //   ...mapState({
+  //     currentCity: 'city'
+  //   })
+  // }
+  //   handleCityClick (city) {
+  //     this.changeCity(city)
+  //     this.$router.push('/')
+  //   }
+  //   ...mapMutations(['changeCity'])
+  // },
+  // @Watch(this.letter)
+  // onLetterChange (): void {
+  //   if (this.letter) {
+  //     let wrapper = document.querySelector('.wrapper')
+  //     let scroll = new BScroll(wrapper)
+  //     const element = this.$refs[this.letter][0]
+  //     scroll.scrollToElement(element)
+  //   }
+  // }
+  created () {
     this.$nextTick(() => {
-      this.scroll = new BScroll(this.$refs.wrapper)
+      let wrapper = document.querySelector('.wrapper')
+      let scroll = new BScroll(wrapper)
+      console.log(scroll)
     })
   }
 }
@@ -90,7 +92,7 @@ export default {
 .border-bottom
   &:before
     border-color: #ccc
-.list
+.wrapper
   overflow: hidden
   position: absolute
   top: 1.78rem

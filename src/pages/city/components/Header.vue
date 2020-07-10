@@ -7,10 +7,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'CityHeader'
-}
+<script lang='ts'>
+import {Vue, Component} from 'vue-property-decorator'
+@Component
+export default class CityHeader extends Vue {}
 </script>
 
 <style lang="stylus" scoped>

@@ -8,40 +8,36 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import axios from 'axios'
+import {Vue, Component} from 'vue-property-decorator'
 import DetailBanner from './components/Banner.vue'
 import DetailHeader from './components/Header.vue'
 import DetailBaseinfo from './components/Baseinfo.vue'
 import DetailList from './components/List.vue'
 import DetailRecommend from './components/Recommend.vue'
-export default {
-  name: 'Detail',
+@Component({
   components: {
     DetailBanner,
     DetailHeader,
     DetailBaseinfo,
     DetailList,
     DetailRecommend
-  },
-  data () {
-    return {
-      recommendList: []
+  }
+})
+export default class Detail extends Vue {
+  recommendList: Array<object> = []
+  getDetailInfo (): any {
+    axios.get('/api/detail.json?id=' + this.$route.params.id)
+      .then(this.getDetailInfoSucc)
+  }
+  getDetailInfoSucc (res): void {
+    res = res.data
+    if (res.ret && res.data) {
+      const data = res.data
+      this.recommendList = data.recommendList
     }
-  },
-  methods: {
-    getDetailInfo () {
-      axios.get('/api/detail.json?id=' + this.$route.params.id)
-        .then(this.getDetailInfoSucc)
-    },
-    getDetailInfoSucc (res) {
-      res = res.data
-      if (res.ret && res.data) {
-        const data = res.data
-        this.recommendList = data.recommendList
-      }
-    }
-  },
+  }
   mounted () {
     this.getDetailInfo()
   }
