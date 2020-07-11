@@ -30,7 +30,6 @@ export default class CityAlphabet extends Vue {
   }
   @Emit('change')
   handleLetterClick (e): string {
-    console.log('a')
     return e.target.innerText
   }
   handleTouchStart (): void {

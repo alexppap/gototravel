@@ -44,15 +44,16 @@
 </template>
 
 <script lang='ts'>
-import {Vue, Component, Prop} from 'vue-property-decorator'
+import {Vue, Component, Prop, Watch} from 'vue-property-decorator'
 import BScroll from '@better-scroll/core'
 // import {mapState, mapMutations} from 'vuex'
 @Component
 export default class CityList extends Vue {
   @Prop({default: []}) hot: Array<object>
   @Prop({default: {}}) cities: object
-  @Prop({default: ''}) letter: string
+  @Prop() letter: string
   currentCity: string = '上海'
+  scroll: any = null
   // computed: {
   //   ...mapState({
   //     currentCity: 'city'
@@ -64,20 +65,17 @@ export default class CityList extends Vue {
   //   }
   //   ...mapMutations(['changeCity'])
   // },
-  // @Watch(this.letter)
-  // onLetterChange (): void {
-  //   if (this.letter) {
-  //     let wrapper = document.querySelector('.wrapper')
-  //     let scroll = new BScroll(wrapper)
-  //     const element = this.$refs[this.letter][0]
-  //     scroll.scrollToElement(element)
-  //   }
-  // }
-  created () {
+  @Watch('letter')
+  onLetterChange (): void {
+    if (this.letter) {
+      const element = this.$refs[this.letter][0]
+      this.scroll.scrollToElement(element)
+    }
+  }
+  mounted () {
     this.$nextTick(() => {
       let wrapper = document.querySelector('.wrapper')
-      let scroll = new BScroll(wrapper)
-      console.log(scroll)
+      this.scroll = new BScroll(wrapper)
     })
   }
 }

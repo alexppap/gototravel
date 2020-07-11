@@ -16,44 +16,40 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
+import {Vue, Component} from 'vue-property-decorator'
 import axios from 'axios'
-import CityHeader from './components/Header'
-import CitySearch from './components/Search'
-import CityList from './components/List'
-import CityAlphabet from './components/Alphabet'
-export default {
-  name: 'City',
+import CityHeader from './components/Header.vue'
+import CitySearch from './components/Search.vue'
+import CityList from './components/List.vue'
+import CityAlphabet from './components/Alphabet.vue'
+@Component({
   components: {
     CityHeader,
     CitySearch,
     CityList,
     CityAlphabet
-  },
-  data () {
-    return {
-      cities: {},
-      hotCities: [],
-      letter: ''
+  }
+})
+export default class City extends Vue {
+  cities: object = {}
+  hotCities: Array<object> = []
+  letter: string = ''
+  getCityInfo (): any {
+    axios.get('/api/city.json')
+      .then(this.getCityInfoSucc)
+  }
+  getCityInfoSucc (res): void {
+    res = res.data
+    if (res.ret && res.data) {
+      const data = res.data
+      this.cities = data.cities
+      this.hotCities = data.hotCities
     }
-  },
-  methods: {
-    getCityInfo () {
-      axios.get('/api/city.json')
-        .then(this.getCityInfoSucc)
-    },
-    getCityInfoSucc (res) {
-      res = res.data
-      if (res.ret && res.data) {
-        const data = res.data
-        this.cities = data.cities
-        this.hotCities = data.hotCities
-      }
-    },
-    handleLetterChange (letter) {
-      this.letter = letter
-    }
-  },
+  }
+  handleLetterChange (letter): void {
+    this.letter = letter
+  }
   mounted () {
     this.getCityInfo()
   }

@@ -19,54 +19,67 @@
   </div>
 </template>
 
-<script>
-import {mapMutations} from 'vuex'
-export default {
-  name: 'CitySearch',
-  props: {
-    cities: Object
-  },
-  data () {
-    return {
-      keyword: '',
-      list: [],
-      timer: null
-    }
-  },
-  methods: {
-    handleCityClick (city) {
-      this.changeCity(city)
-      this.$router.push('/')
-    },
-    ...mapMutations(['changeCity'])
-  },
-  computed: {
-    hasNoData () {
-      return !this.list.length
-    }
-  },
-  watch: {
-    keyword () {
-      if (this.timer) {
-        clearTimeout(this.tiemr)
-      }
-      if (!this.keyword) {
-        this.list = []
-        return
-      }
-      this.timer = setTimeout(() => {
-        const results = []
-        for (let i in this.cities) {
-          this.cities[i].forEach((value) => {
-            if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
-              results.push(value)
-            }
-          })
-        }
-        this.list = results
-      }, 100)
-    }
+<script lang='ts'>
+import {Vue, Component, Prop, Watch} from 'vue-property-decorator'
+import {City} from '@/utils/object'
+// import {mapMutations} from 'vuex'
+@Component
+export default class CitySearch extends Vue {
+  @Prop({default: {}}) cities: object
+  keyword: string = ''
+  list: Array<object> = []
+  timer: null | number = null
+  // handleCityClick (city) {
+  //   this.changeCity(city)
+  //   this.$router.push('/')
+  // },
+  // ...mapMutations(['changeCity'])
+  get hasNoData (): boolean {
+    return !this.list.length
   }
+  @Watch('keyword')
+  onLetterChange () {
+    if (this.timer) {
+      clearTimeout(this.timer)
+    }
+    if (!this.keyword) {
+      this.list = []
+      return
+    }
+    this.timer = setTimeout(() => {
+      const results: Array<object> = []
+      for (let i in this.cities) {
+        this.cities[i].forEach((value: City) => {
+          if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
+            results.push(value)
+          }
+        })
+      }
+      this.list = results
+    }, 100)
+  }
+  // watch: {
+  //   keyword (): {
+  //     if (this.timer) {
+  //       clearTimeout(this.tiemr)
+  //     }
+  //     if (!this.keyword) {
+  //       this.list = []
+  //       return
+  //     }
+  //     this.timer = setTimeout(() => {
+  //       const results = []
+  //       for (let i in this.cities) {
+  //         this.cities[i].forEach((value) => {
+  //           if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
+  //             results.push(value)
+  //           }
+  //         })
+  //       }
+  //       this.list = results
+  //     }, 100)
+  //   }
+  // }
 }
 </script>
 
