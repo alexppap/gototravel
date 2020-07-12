@@ -5,7 +5,7 @@
       <div class="title border-topbottom">当前城市</div>
       <div class="button-list">
         <div class="button-wrapper">
-          <div class="button">{{this.currentCity}}</div>
+          <div class="button">{{profile.city}}</div>
         </div>
     </div>
     </div>
@@ -45,26 +45,22 @@
 
 <script lang='ts'>
 import {Vue, Component, Prop, Watch} from 'vue-property-decorator'
+import { State, Mutation } from 'vuex-class'
+import { ProfileState } from '@/store/profile/types'
 import BScroll from '@better-scroll/core'
-// import {mapState, mapMutations} from 'vuex'
+const namespace: string = 'profile'
 @Component
 export default class CityList extends Vue {
   @Prop({default: []}) hot: Array<object>
   @Prop({default: {}}) cities: object
   @Prop() letter: string
-  currentCity: string = '上海'
+  @State('profile') profile: ProfileState
+  @Mutation('changeCity', {namespace}) changeCity: any
   scroll: any = null
-  // computed: {
-  //   ...mapState({
-  //     currentCity: 'city'
-  //   })
-  // }
-  //   handleCityClick (city) {
-  //     this.changeCity(city)
-  //     this.$router.push('/')
-  //   }
-  //   ...mapMutations(['changeCity'])
-  // },
+  handleCityClick (city) {
+    this.changeCity(city)
+    this.$router.push('/')
+  }
   @Watch('letter')
   onLetterChange (): void {
     if (this.letter) {

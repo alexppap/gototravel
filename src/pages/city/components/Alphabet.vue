@@ -35,7 +35,7 @@ export default class CityAlphabet extends Vue {
   handleTouchStart (): void {
     this.touchStatus = true
   }
-  handleTouchMove (e) {
+  handleTouchMove (e): any {
     if (this.touchStatus) {
       const startY: number = this.$refs['A'][0].offsetTop
       if (this.timer) {

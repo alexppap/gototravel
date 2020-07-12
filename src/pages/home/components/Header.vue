@@ -12,8 +12,7 @@
         class="nav-city"
         to="/city"
       >
-      上海
-      <!-- {{this.$store.state.city}} -->
+      {{profile.city}}
       <span class="iconfont arrow-icon">&#xe600;</span>
       </router-link>
     </div>
@@ -22,10 +21,13 @@
 
 <script lang='ts'>
 import { Vue, Component } from 'vue-property-decorator'
-
+import { State } from 'vuex-class'
+import { ProfileState } from '@/store/profile/types'
+// const namespace: string = 'profile'
 @Component
 export default class HomeHeader extends Vue {
-
+  @State('profile') profile: ProfileState
+  // @State city: string
 }
 </script>
 

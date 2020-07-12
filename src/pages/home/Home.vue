@@ -12,6 +12,8 @@
 <script lang='ts'>
 import axios from 'axios'
 import {Vue} from 'vue-property-decorator'
+import { State } from 'vuex-class'
+import { ProfileState } from '@/store/profile/types'
 import Component from 'vue-class-component'
 import HomeHeader from './components/Header.vue'
 import HomeSwiper from './components/Swiper.vue'
@@ -30,27 +32,14 @@ import HomeWeekend from './components/Weekend.vue'
   }
 })
 export default class Home extends Vue {
-  // computed: {
-  //   ...mapState(['city'])
-  // },
+  @State('profile') profile: ProfileState
   lastcity: string = ''
   swiperList: Array<object> = []
   iconList: Array<object> = []
   recommendList: Array<object> = []
   weekendList: Array<object> = []
-  city: string = '上海'
-
-  // data () {
-  //   return {
-  //     lastcity: '',
-  //     swiperList: [],
-  //     iconList: [],
-  //     recommendList: [],
-  //     weekendList: []
-  //   }
-  // },
   getHomeInfo (): any {
-    axios.get('/api/index.json?city=' + this.city)
+    axios.get('/api/index.json?city=' + this.profile.city)
       .then(this.getHomeInfoSucc)
   }
 
@@ -65,15 +54,15 @@ export default class Home extends Vue {
     }
   }
   mounted () {
-    this.lastcity = this.city
+    this.lastcity = this.profile.city
     this.getHomeInfo()
   }
-  // activated () {
-  //   if (this.lastcity !== this.city) {
-  //     this.lastcity = this.city
-  //     this.getHomeInfo()
-  //   }
-  // }
+  activated () {
+    if (this.lastcity !== this.profile.city) {
+      this.lastcity = this.profile.city
+      this.getHomeInfo()
+    }
+  }
 }
 </script>
 

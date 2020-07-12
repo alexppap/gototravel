@@ -40,19 +40,6 @@ export default class HomeIcon extends Vue {
     })
     return pages
   }
-  // computed: {
-  //   pages () {
-  //     const pages = []
-  //     this.list.forEach((item, index) => {
-  //       const page = Math.floor(index / 8)
-  //       if (!pages[page]) {
-  //         pages[page] = []
-  //       }
-  //       pages[page].push(item)
-  //     })
-  //     return pages
-  //   }
-  // }
 }
 </script>
 

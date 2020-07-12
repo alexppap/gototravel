@@ -22,12 +22,6 @@ export default class HomeSwiper extends Vue {
        pagination: '.swiper-pagination',
        loop: true
      }
-  // return {
-  //   swiperOption: {
-  //     pagination: '.swiper-pagination',
-  //     loop: true
-  //   }
-  // }
 }
 </script>
 
